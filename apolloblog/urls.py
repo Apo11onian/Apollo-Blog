@@ -16,5 +16,5 @@ Including another URLconf
 from django.urls import path, include
 
 urlpatterns = [
-    path('administration/', include('admin_panel.urls')),
+    path('administration/', include(('admin_panel.urls', "admin_panel",), namespace="admin")),
 ]
