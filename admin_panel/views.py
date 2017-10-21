@@ -17,7 +17,13 @@ class LoginView(TemplateView):
             return self.get(request)
         auth.login(request, user_object)
         messages.success(request, "You've been logged in")
-        return http.HttpResponseRedirect("/administration/panel")
+        return http.HttpResponseRedirect(self.get_next_url(request))
+
+    def get_next_url(self, request):
+        if "next" in request.GET:
+            return request.GET['next']
+        else:
+            return "/administration/panel"
 
 
 class Panel(TemplateView):
