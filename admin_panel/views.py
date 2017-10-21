@@ -1,3 +1,4 @@
+from django.views import View
 from django.views.generic import TemplateView
 from django.contrib import auth
 from django.contrib import messages
@@ -23,4 +24,8 @@ class Panel(TemplateView):
     template_name = "admin/panel.html"
 
 
+class LogoutView(View):
+    def get(self, request):
+        auth.logout(request)
+        return http.HttpResponseRedirect("/administration/login")
 
