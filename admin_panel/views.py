@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from django.contrib import auth
 from django.contrib import messages
 from django import http
+from django.urls import reverse
 
 
 class LoginView(TemplateView):
@@ -23,7 +24,7 @@ class LoginView(TemplateView):
         if "next" in request.GET:
             return request.GET['next']
         else:
-            return "/administration/panel"
+            return reverse("admin:Panel")
 
 
 class Panel(TemplateView):
