@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<style>
+    .login-box {
+        width: 33vw;
+        text-align: center;
+        border:rgba(0,0,0,.4) solid 1px;
+        padding:25px;
+        margin: 25px auto auto;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+
+    }
+
+    .field-container input{
+        margin-top:5px;
+        height:23px;
+        border:rgba(0,0,0,.2) solid 1px;
+        border-radius: 4px ;
+        width:100%;
+    }
+    .field-container button:hover{
+        opacity:1;
+
+    }
+    .field-container button{
+        opacity:.8;
+        cursor:pointer;
+        height:40px;
+        margin:10px;
+        width:50%
+    }
+</style>
+<body>
+<div class="login-box">
+    <form method="post">
+        {% csrf_token %}
+        <div class="field-container">
+            <input type="text" name="username" placeholder="Username..">
+        </div>
+        <div class="field-container">
+            <input type="password" name="password" placeholder="Password...">
+        </div>
+        <div class="field-container">
+            <button>
+            Login
+        </button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
