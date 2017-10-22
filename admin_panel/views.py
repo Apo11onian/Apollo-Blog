@@ -1,9 +1,11 @@
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 from django.contrib import auth
 from django.contrib import messages
 from django import http
 from django.urls import reverse
+from admin_panel import forms
+from blog_posting.models import Post
 
 
 class LoginView(TemplateView):
@@ -36,3 +38,8 @@ class LogoutView(View):
         auth.logout(request)
         return http.HttpResponseRedirect("/administration/login")
 
+
+class CreatePost(CreateView):
+    template_name = "admin/create_post.html"
+    model = Post
+    form_class = forms.CreatePost
