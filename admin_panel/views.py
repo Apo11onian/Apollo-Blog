@@ -1,5 +1,5 @@
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, ListView
 from django.contrib import auth
 from django.contrib import messages
 from django import http
@@ -43,3 +43,8 @@ class CreatePost(CreateView):
     template_name = "admin/create_post.html"
     model = Post
     form_class = forms.CreatePost
+
+
+class ListPosts(ListView):
+    template_name = "admin/list_posts.html"
+    model = Post

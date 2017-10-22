@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            width:90%;
+            margin:10px;
+        }
+        td{
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+<div>
+    <a href="{% url "admin:CreatePost" %}">Create a post</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Abstract</th>
+            <th>Published</th>
+            <th>Modified at</th>
+            <th>Created at</th>
+            <th>Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for post in object_list %}
+            <tr>
+                <td>{{ post.id }}</td>
+                <td>{{ post.title }}</td>
+                <td>{{ post.abstract|truncatewords:8 }}</td>
+                <td>
+                    {% if post.published %}
+                        Published
+                    {% else %}
+                        Draft
+                    {% endif %}
+                </td>
+                <td>
+                    <span title="{{ post.created_at }}">{{ post.created_at|date }}</span>
+                </td>
+                <td>
+                    <span title="{{ post.modified_at }}">{{ post.modified_at|date }}</span>
+
+                </td>
+                <td>
+                    ...
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
