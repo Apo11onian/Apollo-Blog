@@ -47,6 +47,7 @@ class CreatePost(CreateView):
     def get_success_url(self):
         return reverse("admin:ListPosts")
 
+
 class ListPosts(ListView):
     template_name = "admin/list_posts.html"
     model = Post
