@@ -25,63 +25,71 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="col-xs-2">
-        <nav class="navbar navbar-default sidebar" role="navigation">
-    <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-sidebar-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active">
-            <a href="{% url "admin_panel:Panel" %}">
-                Home
-                <i style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></i>
-            </a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              Posting
-              <span class="caret"></span>
-              <i style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></i>
-          </a>
-          <ul class="dropdown-menu forAnimate" role="menu">
-            <li>
-                <a href="{% url "admin_panel:ListPosts" %}">
-                  <i style="font-size:16px;" class="glyphicon glyphicon-list"></i>
-                    List
-                </a>
-            </li>
-            <li>
-                <a href="{% url "admin_panel:CreatePost" %}">
-                  <i style="font-size:16px;" class="glyphicon glyphicon-pencil"></i>
-                    Create
-                </a>
-            </li>
-            <li class="divider"></li>
+    <main>
+        <div class="row">
+            <div class="col-xs-2">
+                <nav class="navbar navbar-default sidebar" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#bs-sidebar-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="{% url "admin_panel:Panel" %}">
+                                        Home
+                                        <i style="font-size:16px;"
+                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Posting
+                                        <span class="caret"></span>
+                                        <i style="font-size:16px;"
+                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></i>
+                                    </a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li>
+                                            <a href="{% url "admin_panel:ListPosts" %}">
+                                                <i style="font-size:16px;" class="glyphicon glyphicon-list"></i>
+                                                List
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url "admin_panel:CreatePost" %}">
+                                                <i style="font-size:16px;" class="glyphicon glyphicon-pencil"></i>
+                                                Create
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
 
-          </ul>
-        </li>
-        <li ><a href="{% url "admin_panel:Logout" %}">
-            Logout
-            <i style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></i>
-        </a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url "admin_panel:Logout" %}">
+                                    Logout
+                                    <i style="font-size:16px;"
+                                       class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></i>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
-    </div>
-    <div class="col-xs-10">
-        {% block CONTENT %}
-        {% endblock %}
+            </div>
+            <div class="col-xs-10">
+                {% block CONTENT %}
+                {% endblock %}
 
-    </div>
+            </div>
+        </div>
+    </main>
 </div>
 <script src="{% static "bootstrap-3.3.7-dist/js/jquery.min.js" %}"></script>
 <script src="{% static "bootstrap-3.3.7-dist/js/bootstrap.min.js" %}"></script>

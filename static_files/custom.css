@@ -1,6 +1,12 @@
 body,html{
     height: 100%;
+    background-color: rgba(4, 5, 48, 0.3);
+    color:white;
   }
+main{
+    padding:20px;
+
+}
 
   nav.sidebar, .main{
     -webkit-transition: margin 200ms ease-out;
