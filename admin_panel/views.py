@@ -38,7 +38,6 @@ class LogoutView(View):
         auth.logout(request)
         return http.HttpResponseRedirect("/administration/login")
 
-
 class CreatePost(CreateView):
     template_name = "admin/create_post.html"
     model = Post
