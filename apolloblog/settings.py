@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_posting',
     'admin_panel',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
