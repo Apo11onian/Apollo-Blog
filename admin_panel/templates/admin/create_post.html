@@ -1,47 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        input, textarea, button{
-            display:block;
-            margin:10px;
+{% extends 'admin/base.html' %}
+{% load bootstrap3 %}
 
-        }
-        textarea{
-            width: 80vw;
-        }
-        button{
-            padding: 5px;
-            width: 120px;
-        }
-        .editor-container{
-            border: solid thin whitesmoke;
-
-
-        }
-    </style>
-
-</head>
-<body>
-<div>
-    <span style="color:red;">
-        Don't worry about how it looks, it will be good at the end >:-)
-    </span>
-    <div class="editor-container">
-        <form method="post">
-        {% csrf_token %}
-        <input type="text" name="title" placeholder="Title...">
-        <textarea name="abstract" id="abstract" cols="30" rows="10" placeholder="Abstract..."></textarea>
-        <button>
-            Create draft
-        </button>
-            <a href="{% url "admin:ListPosts" %}">
-                Cancel
-            </a>
-    </form>
+{% block CONTENT %}
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button class="btn btn-success">
+                    Create draft
+                </button>
+                <a href="{% url "admin:ListPosts" %}" class="btn btn-default">
+                    Cancel
+                </a>
+            </form>
+        </div>
     </div>
-</div>
-</body>
-</html>
+{% endblock %}
