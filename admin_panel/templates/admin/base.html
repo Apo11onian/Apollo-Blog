@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block HEAD %}
+
+    {% endblock %}
+    {% block STYLE %}
+
+    {% endblock %}
+
+
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'custom.css' %}" rel="stylesheet">
+
+
+    <!--[if lt IE 9]>
+      <script src="{% static "bootstrap-3.3.7-dist/js/html5shiv.min.js" %}"></script>
+      <script src="{% static "bootstrap-3.3.7-dist/js/respond.min.js" %}"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid">
+    <main>
+        <div class="row">
+            <div class="col-xs-2">
+                <nav class="navbar navbar-default sidebar" role="navigation">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#bs-sidebar-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active">
+                                    <a href="{% url "admin_panel:Panel" %}">
+                                        Home
+                                        <i style="font-size:16px;"
+                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></i>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        Posting
+                                        <span class="caret"></span>
+                                        <i style="font-size:16px;"
+                                           class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></i>
+                                    </a>
+                                    <ul class="dropdown-menu forAnimate" role="menu">
+                                        <li>
+                                            <a href="{% url "admin_panel:ListPosts" %}">
+                                                <i style="font-size:16px;" class="glyphicon glyphicon-list"></i>
+                                                List
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url "admin_panel:CreatePost" %}">
+                                                <i style="font-size:16px;" class="glyphicon glyphicon-pencil"></i>
+                                                Create
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+
+                                    </ul>
+                                </li>
+                                <li><a href="{% url "admin_panel:Logout" %}">
+                                    Logout
+                                    <i style="font-size:16px;"
+                                       class="pull-right hidden-xs showopacity glyphicon glyphicon-off"></i>
+                                </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+            </div>
+            <div class="col-xs-10">
+                <div class="container-fluid">
+                    {% block CONTENT %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="{% static "bootstrap-3.3.7-dist/js/jquery.min.js" %}"></script>
+<script src="{% static "bootstrap-3.3.7-dist/js/bootstrap.min.js" %}"></script>
+{% block SCRIPT %}
+
+{% endblock %}
+</body>
+</html>

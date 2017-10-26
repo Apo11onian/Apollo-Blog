@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog_posting',
     'admin_panel',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -121,3 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_URL = "/administration/login"
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static_files")
+]
