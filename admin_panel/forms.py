@@ -1,4 +1,5 @@
 from django import forms
+from django.db import IntegrityError
 from blog_posting import models
 from datetime import datetime
 
@@ -22,3 +23,9 @@ class Tag(forms.ModelForm):
     class Meta:
         model = models.Tag
         fields = ("text", )
+
+    def save(self, commit=True):
+        try:
+            return super(Tag, self).save(commit=commit)
+        except IntegrityError:
+            return models.Tag.objects.get(text=self.cleaned_data['text'])
