@@ -55,8 +55,12 @@ class ListPosts(ListView):
 
 
 class Tags(View):
+    def get(self, request):
+
+        pass
+
     def post(self, request):
-        form = forms.CreateTag(json.loads(request.body.decode("utf8")))
+        form = forms.Tag(json.loads(request.body.decode("utf8")))
         if form.is_valid():
             instance = form.save()
             return http.JsonResponse({"id": instance.id, "text": instance.text})

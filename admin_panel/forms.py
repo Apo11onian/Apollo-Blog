@@ -18,7 +18,7 @@ class CreatePost(forms.ModelForm):
         return blog_post_object
 
 
-class CreateTag(forms.ModelForm):
+class Tag(forms.ModelForm):
     class Meta:
         model = models.Tag
         fields = ("text", )
