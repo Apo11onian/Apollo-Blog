@@ -7,6 +7,15 @@
             <form method="post">
                 {% csrf_token %}
                 {% bootstrap_form form %}
+                <div class="input-group col-xs-4">
+                <div class="input-group col-xs-4">
+
+                    <input type="text" id="tag_text" class="form-control" placeholder="type tag here...">
+                    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" id="submit_tag">Add</button>
+      </span>
+                </div>
+                <br>
                 <button class="btn btn-success">
                     Create draft
                 </button>
@@ -16,4 +25,26 @@
             </form>
         </div>
     </div>
+{% endblock %}
+
+{% block SCRIPT %}
+    <script type="text/javascript">
+        $("#submit_tag").click(function () {
+            var url = "{% url "admin_panel:TagsAPI" %}";
+            $.ajax(
+                {
+                    'url': url,
+                    'method': 'post',
+                    'data': JSON.stringify({"text": $("#tag_text").val()})
+                }
+            ).success(function () {
+                $("#tag_text").val("");
+            }).error(function (response) {
+                if ('message' in response.responseJSON)
+                    alert(response.responseJSON['message']);
+                else
+                    alert(response.responseText);
+            })
+        });
+    </script>
 {% endblock %}

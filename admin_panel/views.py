@@ -6,6 +6,7 @@ from django import http
 from django.urls import reverse
 from admin_panel import forms
 from blog_posting.models import Post
+import json
 
 
 class LoginView(TemplateView):
@@ -38,6 +39,7 @@ class LogoutView(View):
         auth.logout(request)
         return http.HttpResponseRedirect("/administration/login")
 
+
 class CreatePost(CreateView):
     template_name = "admin/create_post.html"
     model = Post
@@ -50,3 +52,12 @@ class CreatePost(CreateView):
 class ListPosts(ListView):
     template_name = "admin/list_posts.html"
     model = Post
+
+
+class Tags(View):
+    def post(self, request):
+        form = forms.CreateTag(json.loads(request.body.decode("utf8")))
+        if form.is_valid():
+            instance = form.save()
+            return http.JsonResponse({"id": instance.id, "text": instance.text})
+        return http.JsonResponse({"message": "Invalid request"}, status=400)

@@ -9,5 +9,6 @@ urlpatterns = [
     path('panel', login_required(views.Panel.as_view()), name="Panel"),
     path('posts/create', login_required(views.CreatePost.as_view()), name="CreatePost"),
     path('posts', login_required(views.ListPosts.as_view()), name="ListPosts"),
+    path('api/tags', login_required(views.Tags.as_view()), name="TagsAPI"),
     path('', login_required(RedirectView.as_view(url="login")), name="LoginPage"),
 ]
