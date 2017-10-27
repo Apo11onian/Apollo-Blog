@@ -9,6 +9,7 @@ class Post(models.Model):
     title = models.CharField(max_length=280)
     abstract = models.TextField()
     text = models.TextField()
+    tags = models.ManyToManyField(Tag)
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField()
     modified_at = models.DateTimeField()
