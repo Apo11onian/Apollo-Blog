@@ -4,6 +4,9 @@ from django.db import models
 class Tag(models.Model):
     text = models.CharField(max_length=64, unique=True)
 
+    def __str__(self):
+        return self.text
+
 
 class Post(models.Model):
     title = models.CharField(max_length=280)
@@ -13,6 +16,9 @@ class Post(models.Model):
     published = models.BooleanField(default=False)
     created_at = models.DateTimeField()
     modified_at = models.DateTimeField()
+
+    def __str__(self):
+        return self.title
 
 # In order to not to forget about these I keep them here
 # class PostContent(models.Model):
