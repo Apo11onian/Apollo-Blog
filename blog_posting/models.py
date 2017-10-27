@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Tag(models.Model):
-    text = models.CharField(max_length=64)
+    text = models.CharField(max_length=64, unique=True)
 
 
 class Post(models.Model):
