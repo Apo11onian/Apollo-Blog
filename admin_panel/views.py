@@ -5,7 +5,7 @@ from django.contrib import messages
 from django import http
 from django.urls import reverse
 from admin_panel import forms
-from blog_posting.models import Post
+from blog_posting.models import Post, Tag
 import json
 
 
@@ -56,8 +56,12 @@ class ListPosts(ListView):
 
 class Tags(View):
     def get(self, request):
+        queryset = Tag.objects.all()
+        if "q" in request.GET:
+            queryset = queryset.filter(text__startswith=request.GET['q'])
+        result = {"data": [{"id": t.id, "text": t.text} for t in queryset]}
+        return http.JsonResponse(result)
 
-        pass
 
     def post(self, request):
         form = forms.Tag(json.loads(request.body.decode("utf8")))
